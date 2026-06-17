@@ -1,0 +1,869 @@
+/* ── App shell ─────────────────────────────────────────── */
+
+.app {
+  width: 100%;
+  max-width: 480px;
+  height: 100%;
+  max-height: 860px;
+}
+
+.app__frame {
+  width: 100%;
+  height: 100%;
+  background: var(--recipe-bg, var(--bg-dark));
+  border: 4px solid var(--border);
+  box-shadow:
+    0 0 0 4px var(--shadow),
+    8px 8px 0 var(--shadow);
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* ── Background music toggle ───────────────────────────── */
+
+.bg-music-toggle {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 20;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 3px solid var(--border);
+  background: var(--bg-panel);
+  box-shadow: 2px 2px 0 var(--shadow);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.05s, filter 0.1s;
+}
+
+.bg-music-toggle:hover {
+  filter: brightness(1.15);
+}
+
+.bg-music-toggle:active {
+  transform: translate(2px, 2px);
+  box-shadow: none;
+}
+
+.bg-music-toggle__icon {
+  font-size: 14px;
+  line-height: 1;
+  opacity: 0.85;
+}
+
+.bg-music-toggle[aria-pressed='true'] .bg-music-toggle__icon {
+  opacity: 1;
+}
+
+.bg-music-toggle[aria-pressed='false'] .bg-music-toggle__icon {
+  opacity: 0.5;
+}
+
+/* ── Screens ───────────────────────────────────────────── */
+
+.screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 24px 20px 32px;
+  min-height: 100%;
+  animation: screen-in 0.3s ease;
+}
+
+@keyframes screen-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.screen__heading {
+  font-size: 14px;
+  text-align: center;
+  color: var(--recipe-accent, var(--btn-accent));
+  line-height: 1.6;
+}
+
+.screen__subheading {
+  font-size: 8px;
+  color: var(--text-muted);
+  text-align: center;
+  line-height: 1.8;
+  margin-top: -8px;
+}
+
+/* ── Pixel button ──────────────────────────────────────── */
+
+.pixel-btn {
+  font-family: var(--pixel-font);
+  font-size: 10px;
+  color: var(--text-light);
+  background: var(--btn-primary);
+  border: none;
+  padding: 14px 20px;
+  cursor: pointer;
+  position: relative;
+  box-shadow:
+    0 4px 0 var(--shadow),
+    inset 0 -4px 0 rgba(0,0,0,0.2),
+    inset 0 4px 0 rgba(255,255,255,0.1);
+  transition: transform 0.05s, box-shadow 0.05s;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.pixel-btn:hover {
+  filter: brightness(1.1);
+}
+
+.pixel-btn:active {
+  transform: translateY(4px);
+  box-shadow:
+    0 0 0 var(--shadow),
+    inset 0 -4px 0 rgba(0,0,0,0.2),
+    inset 0 4px 0 rgba(255,255,255,0.1);
+}
+
+.pixel-btn--secondary {
+  background: var(--btn-secondary);
+}
+
+.pixel-btn--accent {
+  background: var(--btn-accent);
+  color: var(--shadow);
+}
+
+.pixel-btn--sm {
+  font-size: 8px;
+  padding: 10px 14px;
+}
+
+.pixel-btn--lg {
+  font-size: 11px;
+  padding: 18px 28px;
+}
+
+/* ── Pixel panel ───────────────────────────────────────── */
+
+.pixel-panel {
+  background: var(--bg-panel);
+  border: 4px solid var(--border);
+  padding: 16px;
+  width: 100%;
+  box-shadow: 4px 4px 0 var(--shadow);
+  position: relative;
+}
+
+.pixel-panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--panel-accent, var(--recipe-primary, var(--btn-primary)));
+}
+
+/* ── Progress bar ──────────────────────────────────────── */
+
+.progress-bar {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.progress-bar__label {
+  font-size: 8px;
+  color: var(--recipe-accent, var(--btn-accent));
+}
+
+.progress-bar__track {
+  height: 16px;
+  background: var(--shadow);
+  border: 2px solid var(--border);
+  position: relative;
+}
+
+.progress-bar__fill {
+  height: 100%;
+  background: var(--btn-accent);
+  transition: width 0.15s steps(4);
+  image-rendering: pixelated;
+}
+
+.progress-bar__count {
+  font-size: 8px;
+  color: var(--text-muted);
+  text-align: right;
+}
+
+/* ── Step indicator ────────────────────────────────────── */
+
+.step-indicator {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.step-indicator__phase {
+  font-size: 8px;
+  color: var(--recipe-accent, var(--btn-accent));
+}
+
+.step-indicator__dots {
+  display: flex;
+  gap: 6px;
+  flex: 1;
+  justify-content: center;
+}
+
+.step-indicator__dot {
+  width: 10px;
+  height: 10px;
+  background: var(--shadow);
+  border: 2px solid var(--border);
+}
+
+.step-indicator__dot.done {
+  background: var(--recipe-primary, var(--btn-primary));
+}
+
+.step-indicator__dot.active {
+  background: var(--recipe-accent, var(--btn-accent));
+  animation: pulse-dot 0.8s infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+.step-indicator__count {
+  font-size: 8px;
+  color: var(--text-muted);
+}
+
+/* ── Kitchen scene ─────────────────────────────────────── */
+
+.kitchen-scene {
+  width: 100%;
+  height: 160px;
+  position: relative;
+  margin: 8px 0;
+}
+
+.kitchen-scene__bg {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: linear-gradient(180deg, #3d2e24 0%, #2a2018 60%, #1f1814 100%);
+  border: 4px solid var(--border);
+  overflow: hidden;
+}
+
+.kitchen-scene__shelf {
+  position: absolute;
+  top: 20px;
+  left: 10%;
+  right: 10%;
+  height: 6px;
+  background: #5c4a3a;
+  box-shadow: 0 8px 0 #4a3c30;
+}
+
+.kitchen-scene__counter {
+  position: absolute;
+  bottom: 40px;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: #6b5a4a;
+}
+
+.kitchen-scene__stove {
+  position: absolute;
+  bottom: 0;
+  right: 16px;
+  width: 80px;
+  height: 48px;
+  background: #333;
+  border: 2px solid #222;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.kitchen-scene__burner {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #222;
+  border: 3px solid #444;
+}
+
+.kitchen-scene__burner--on {
+  background: radial-gradient(circle, #ff6b35 30%, #c44b2a 70%);
+  animation: burner-flicker 0.5s infinite alternate;
+}
+
+@keyframes burner-flicker {
+  from { filter: brightness(1); }
+  to { filter: brightness(1.3); }
+}
+
+.kitchen-scene__pot {
+  position: absolute;
+  bottom: 44px;
+  right: 28px;
+  font-size: 28px;
+  filter: drop-shadow(2px 2px 0 var(--shadow));
+}
+
+.kitchen-scene__ingredient {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 48px;
+  filter: drop-shadow(4px 4px 0 var(--shadow));
+  transition: transform 0.1s;
+}
+
+.kitchen-scene__ingredient.CHOP {
+  animation: chop 0.2s ease;
+}
+
+.kitchen-scene__ingredient.MIX,
+.kitchen-scene__ingredient.STIR {
+  animation: stir 0.4s ease infinite;
+}
+
+.kitchen-scene__ingredient.TAP,
+.kitchen-scene__ingredient.ADD,
+.kitchen-scene__ingredient.SCOOP,
+.kitchen-scene__ingredient.RUB {
+  animation: tap-bounce 0.15s ease;
+}
+
+.kitchen-scene--animate .kitchen-scene__ingredient {
+  animation: wiggle 0.3s ease;
+}
+
+@keyframes chop {
+  0%, 100% { transform: translate(-50%, -50%) rotate(0deg); }
+  50% { transform: translate(-50%, -60%) rotate(-15deg); }
+}
+
+@keyframes stir {
+  0%, 100% { transform: translate(-50%, -50%) rotate(-10deg); }
+  50% { transform: translate(-50%, -50%) rotate(10deg); }
+}
+
+@keyframes tap-bounce {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -55%) scale(1.1); }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: translate(-50%, -50%); }
+  25% { transform: translate(-48%, -50%); }
+  75% { transform: translate(-52%, -50%); }
+}
+
+.kitchen-scene__action-label {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 10px;
+  color: var(--recipe-accent, var(--btn-accent));
+  text-shadow: 2px 2px 0 var(--shadow);
+  animation: pulse-dot 0.6s infinite;
+}
+
+/* ── Timer ─────────────────────────────────────────────── */
+
+.timer-display {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--shadow);
+  border: 3px solid var(--border);
+  padding: 10px 16px;
+}
+
+.timer-display--running .timer-display__time {
+  color: var(--recipe-accent, var(--btn-accent));
+  animation: pulse-dot 1s infinite;
+}
+
+.timer-display__icon {
+  font-size: 16px;
+}
+
+.timer-display__time {
+  font-size: 16px;
+  letter-spacing: 2px;
+}
+
+/* ── Title screen ──────────────────────────────────────── */
+
+.title-screen {
+  justify-content: center;
+  text-align: center;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(196, 75, 42, 0.15) 0%, transparent 60%),
+    var(--bg-dark);
+}
+
+.title-screen__decor {
+  display: flex;
+  gap: 24px;
+  font-size: 20px;
+  opacity: 0.7;
+}
+
+.title-screen__logo {
+  font-size: 28px;
+  line-height: 1.4;
+  margin: 8px 0;
+}
+
+.title-screen__neaday {
+  color: var(--btn-accent);
+  display: block;
+}
+
+.title-screen__kitchen {
+  color: #c44b2a;
+  display: block;
+  font-size: 22px;
+}
+
+.title-screen__native {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.title-screen__tagline {
+  font-size: 8px;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.title-screen__mesob {
+  margin: 16px 0 24px;
+}
+
+.mesob {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.mesob__lid {
+  width: 80px;
+  height: 12px;
+  background: #5c4028;
+  border: 3px solid #3d2a1a;
+  border-radius: 50% 50% 0 0;
+}
+
+.mesob__bowl {
+  width: 100px;
+  height: 48px;
+  background: #8b6914;
+  border: 4px solid #5c4028;
+  border-radius: 0 0 50% 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+}
+
+.mesob__base {
+  width: 60px;
+  height: 16px;
+  background: #3d2a1a;
+  border-radius: 0 0 8px 8px;
+}
+
+.title-screen__credit {
+  font-size: 7px;
+  color: var(--text-muted);
+  margin-top: 8px;
+  line-height: 1.8;
+}
+
+/* ── Dish picker ───────────────────────────────────────── */
+
+.dish-picker__grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+.dish-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+  padding-top: 20px;
+}
+
+.dish-card__banner {
+  position: absolute;
+  top: 4px;
+  left: 0;
+  right: 0;
+  height: 8px;
+}
+
+.dish-card__emoji {
+  font-size: 40px;
+  margin: 4px 0;
+}
+
+.dish-card__name {
+  font-size: 12px;
+  color: var(--text-light);
+}
+
+.dish-card__amharic {
+  font-size: 10px;
+  color: var(--text-muted);
+}
+
+.dish-card__tagline {
+  font-size: 8px;
+  color: var(--btn-accent);
+}
+
+.dish-card__desc {
+  font-size: 7px;
+  color: var(--text-muted);
+  line-height: 1.8;
+  padding: 0 8px;
+}
+
+.dish-card__meta {
+  display: flex;
+  gap: 16px;
+  font-size: 7px;
+  color: var(--text-muted);
+  margin: 4px 0 8px;
+}
+
+/* ── Intro screen ──────────────────────────────────────── */
+
+.intro-screen__badge {
+  font-size: 14px;
+  color: var(--recipe-primary, var(--btn-primary));
+  padding: 8px 16px;
+  border: 3px solid var(--recipe-primary, var(--btn-primary));
+}
+
+.intro-screen__tagline {
+  font-size: 9px;
+  color: var(--text-muted);
+  margin-top: -8px;
+}
+
+.intro-screen__story p,
+.intro-screen__note p {
+  font-size: 8px;
+  line-height: 2;
+  color: var(--text-light);
+}
+
+.intro-screen__note {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.intro-screen__note-icon {
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.intro-screen__preview {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  justify-content: center;
+}
+
+.intro-screen__phase {
+  flex: 1;
+  text-align: center;
+  background: var(--shadow);
+  border: 2px solid var(--border);
+  padding: 12px 8px;
+}
+
+.intro-screen__phase span {
+  font-size: 16px;
+  color: var(--recipe-accent, var(--btn-accent));
+  display: block;
+}
+
+.intro-screen__phase p {
+  font-size: 8px;
+  margin-top: 4px;
+}
+
+.intro-screen__phase small {
+  font-size: 6px;
+  color: var(--text-muted);
+}
+
+.intro-screen__arrow {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.intro-screen__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.timer-display--finished .timer-display__time {
+  color: #5c8a3c;
+}
+
+.timer-display--finished {
+  border-color: #5c8a3c;
+}
+
+/* ── Tutorial step (prep & cook) ───────────────────────── */
+
+.tutorial-step__instruction h3 {
+  font-size: 10px;
+  color: var(--recipe-accent, var(--btn-accent));
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+
+.tutorial-step__instruction p {
+  font-size: 8px;
+  color: var(--text-muted);
+  line-height: 2;
+}
+
+.tutorial-step__duration {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 12px;
+  background: var(--shadow);
+  border: 2px solid var(--border);
+}
+
+.tutorial-step__duration-label {
+  font-size: 7px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.tutorial-step__duration-value {
+  font-size: 14px;
+  color: var(--recipe-accent, var(--btn-accent));
+}
+
+.tutorial-step__active {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: stretch;
+}
+
+.tutorial-step__timer-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.tutorial-step__timer-done {
+  font-size: 8px;
+  color: #5c8a3c;
+  text-align: center;
+}
+
+/* ── Prep & Cook screens (legacy) ──────────────────────── */
+
+.prep-screen__instruction h3,
+.cook-screen__instruction h3 {
+  font-size: 10px;
+  color: var(--recipe-accent, var(--btn-accent));
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+
+.prep-screen__instruction p,
+.cook-screen__instruction p {
+  font-size: 8px;
+  color: var(--text-muted);
+  line-height: 2;
+}
+
+.prep-screen__action-btn,
+.cook-screen__action-btn {
+  width: 100%;
+}
+
+.cook-screen__simmering {
+  text-align: center;
+}
+
+.cook-screen__steam {
+  font-size: 14px;
+  color: var(--text-muted);
+  animation: steam-rise 1.5s infinite;
+  display: block;
+}
+
+@keyframes steam-rise {
+  0%, 100% { opacity: 0.3; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(-4px); }
+}
+
+.cook-screen__simmering p {
+  font-size: 8px;
+  color: var(--text-muted);
+}
+
+.cook-screen__ready {
+  font-size: 9px;
+  color: var(--recipe-accent, var(--btn-accent));
+  animation: pulse-dot 0.6s infinite;
+}
+
+/* ── Serve screen ──────────────────────────────────────── */
+
+.serve-screen {
+  position: relative;
+  overflow: hidden;
+}
+
+.serve-screen__confetti span {
+  position: absolute;
+  font-size: 12px;
+  animation: confetti-fall 2s ease-in infinite;
+  animation-delay: calc(var(--i) * 0.15s);
+  left: calc(var(--i) * 8%);
+  top: -20px;
+  opacity: 0.8;
+}
+
+@keyframes confetti-fall {
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(400px) rotate(360deg); opacity: 0; }
+}
+
+.serve-screen__title {
+  font-size: 16px;
+  color: var(--recipe-accent, var(--btn-accent));
+}
+
+.serve-screen__subtitle {
+  font-size: 9px;
+  color: var(--text-muted);
+  margin-top: -8px;
+}
+
+.serve-screen__plate {
+  margin: 16px 0;
+}
+
+.injera {
+  position: relative;
+  width: 160px;
+  height: 160px;
+}
+
+.injera__bread {
+  width: 100%;
+  height: 100%;
+  background: #c9a86c;
+  border-radius: 50%;
+  border: 4px solid #a08050;
+  box-shadow: 4px 4px 0 var(--shadow);
+  position: relative;
+}
+
+.injera__bread::after {
+  content: '';
+  position: absolute;
+  inset: 12px;
+  border: 2px dashed #a08050;
+  border-radius: 50%;
+  opacity: 0.5;
+}
+
+.injera__wat {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  border: 3px solid rgba(0,0,0,0.3);
+  animation: pulse-dot 2s infinite;
+}
+
+.serve-screen__message h3 {
+  font-size: 11px;
+  color: var(--recipe-accent, var(--btn-accent));
+  margin-bottom: 8px;
+}
+
+.serve-screen__message p {
+  font-size: 8px;
+  line-height: 2;
+  color: var(--text-light);
+}
+
+.serve-screen__tip {
+  margin-top: 8px;
+  color: var(--text-muted) !important;
+  font-style: italic;
+}
+
+.serve-screen__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
