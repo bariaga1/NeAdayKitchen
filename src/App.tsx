@@ -1,6 +1,10 @@
+import { useMemo } from 'react'
 import { BackgroundMusic } from './components/BackgroundMusic'
+import { LanguageToggle } from './components/LanguageToggle'
 import { getRecipe, recipes } from './data/recipes'
 import { useGameState } from './hooks/useGameState'
+import { useLanguage } from './i18n/languageContext'
+import { localizeRecipe } from './i18n/recipes.ti'
 import { DishPicker } from './screens/DishPicker'
 import { IntroScreen } from './screens/IntroScreen'
 import { ServeScreen } from './screens/ServeScreen'
@@ -21,8 +25,14 @@ function App() {
     nextPrepStep,
     nextCookStep,
   } = useGameState()
+  const { lang, t } = useLanguage()
 
-  const recipe = state.recipeId ? getRecipe(state.recipeId) : undefined
+  const localizedRecipes = useMemo(
+    () => recipes.map((r) => localizeRecipe(r, lang)),
+    [lang],
+  )
+  const baseRecipe = state.recipeId ? getRecipe(state.recipeId) : undefined
+  const recipe = baseRecipe ? localizeRecipe(baseRecipe, lang) : undefined
 
   const recipeStyle = recipe
     ? ({
@@ -36,6 +46,7 @@ function App() {
   return (
     <div className="app" style={recipeStyle}>
       <div className="app__frame">
+        <LanguageToggle />
         <BackgroundMusic />
         {state.phase === 'title' && (
           <TitleScreen onStart={() => setPhase('picker')} />
@@ -43,7 +54,7 @@ function App() {
 
         {state.phase === 'picker' && (
           <DishPicker
-            recipes={recipes}
+            recipes={localizedRecipes}
             onSelect={selectRecipe}
             onBack={resetGame}
           />
@@ -62,7 +73,7 @@ function App() {
             recipe={recipe}
             steps={recipe.prepSteps}
             stepIndex={state.prepStepIndex}
-            phaseLabel="PREP"
+            phaseLabel={t.labelPrep}
             stepStarted={state.stepStarted}
             timerStarted={state.timerStarted}
             timerRunning={state.timerRunning}
@@ -81,7 +92,7 @@ function App() {
             recipe={recipe}
             steps={recipe.cookSteps}
             stepIndex={state.cookStepIndex}
-            phaseLabel="COOK"
+            phaseLabel={t.labelCook}
             stepStarted={state.stepStarted}
             timerStarted={state.timerStarted}
             timerRunning={state.timerRunning}

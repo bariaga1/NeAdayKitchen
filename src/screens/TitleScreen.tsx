@@ -1,10 +1,13 @@
 import { PixelButton } from '../components/PixelButton'
+import { useLanguage } from '../i18n/languageContext'
 
 interface TitleScreenProps {
   onStart: () => void
 }
 
 export function TitleScreen({ onStart }: TitleScreenProps) {
+  const { t } = useLanguage()
+
   return (
     <div className="screen title-screen">
       <div className="title-screen__decor">
@@ -19,7 +22,7 @@ export function TitleScreen({ onStart }: TitleScreenProps) {
       </h1>
 
       <p className="title-screen__native">ናይ ኣዳይ ኩሽን</p>
-      <p className="title-screen__tagline">Guided Habesha Cooking</p>
+      <p className="title-screen__tagline">{t.titleTagline}</p>
 
       <div className="title-screen__mesob">
         <div className="mesob">
@@ -32,10 +35,10 @@ export function TitleScreen({ onStart }: TitleScreenProps) {
       </div>
 
       <PixelButton size="lg" onClick={onStart}>
-        Start Cooking
+        {t.startCooking}
       </PixelButton>
 
-      <p className="title-screen__credit">Real cook times — your pace, your kitchen</p>
+      <p className="title-screen__credit">{t.titleCredit}</p>
     </div>
   )
 }

@@ -4,12 +4,13 @@ import { PixelButton } from '../components/PixelButton'
 import { PixelPanel } from '../components/PixelPanel'
 import { StepIndicator } from '../components/StepIndicator'
 import { TimerDisplay } from '../components/TimerDisplay'
+import { useLanguage } from '../i18n/languageContext'
 
 interface TutorialStepScreenProps {
   recipe: Recipe
   steps: RecipeStep[]
   stepIndex: number
-  phaseLabel: 'PREP' | 'COOK'
+  phaseLabel: string
   stepStarted: boolean
   timerStarted: boolean
   timerRunning: boolean
@@ -38,6 +39,7 @@ export function TutorialStepScreen({
   onNext,
   onBack,
 }: TutorialStepScreenProps) {
+  const { t } = useLanguage()
   const step = steps[stepIndex]
   const isLastStep = stepIndex === steps.length - 1
   const hasTimer = step.durationMinutes !== null && step.durationMinutes > 0
@@ -59,7 +61,7 @@ export function TutorialStepScreen({
 
       <KitchenScene
         emoji={step.emoji}
-        action={stepStarted ? phaseLabel : 'READ'}
+        action={stepStarted ? phaseLabel : t.labelRead}
         animate={timerRunning}
       />
 
@@ -69,13 +71,13 @@ export function TutorialStepScreen({
       </PixelPanel>
 
       <div className="tutorial-step__duration">
-        <span className="tutorial-step__duration-label">Real cook time</span>
+        <span className="tutorial-step__duration-label">{t.realCookTime}</span>
         <span className="tutorial-step__duration-value">{step.durationLabel}</span>
       </div>
 
       {!stepStarted && (
         <PixelButton size="lg" onClick={onStartStep}>
-          Start Step
+          {t.startStep}
         </PixelButton>
       )}
 
@@ -86,7 +88,7 @@ export function TutorialStepScreen({
               variant="accent"
               onClick={() => onStartTimer(step.durationMinutes!)}
             >
-              Start Timer ({step.durationLabel})
+              {t.startTimer(step.durationLabel)}
             </PixelButton>
           )}
 
@@ -99,7 +101,7 @@ export function TutorialStepScreen({
               />
               {timerRunning && (
                 <PixelButton variant="secondary" size="sm" onClick={onStopTimer}>
-                  Pause Timer
+                  {t.pauseTimer}
                 </PixelButton>
               )}
               {!timerRunning && timerRemainingSeconds > 0 && (
@@ -108,23 +110,23 @@ export function TutorialStepScreen({
                   size="sm"
                   onClick={onResumeTimer}
                 >
-                  Resume Timer
+                  {t.resumeTimer}
                 </PixelButton>
               )}
               {timerFinished && (
-                <p className="tutorial-step__timer-done">Timer finished — check your pot!</p>
+                <p className="tutorial-step__timer-done">{t.timerDone}</p>
               )}
             </div>
           )}
 
           <PixelButton size="lg" onClick={onNext}>
-            {isLastStep ? `Finish ${phaseLabel} →` : 'Next Step →'}
+            {isLastStep ? t.finishPhase(phaseLabel) : t.nextStep}
           </PixelButton>
         </div>
       )}
 
       <PixelButton variant="secondary" size="sm" onClick={onBack}>
-        ← Back to Menu
+        {t.backToMenu}
       </PixelButton>
     </div>
   )

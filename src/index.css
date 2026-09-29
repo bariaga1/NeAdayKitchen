@@ -1,7 +1,50 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
+/* Press Start 2P has no Ge'ez glyphs, and its Latin glyphs fill the whole em box;
+   size-adjust keeps Ethiopic text legible at the pixel font's tiny px sizes. */
+@font-face {
+  font-family: 'Ethiopic Fallback';
+  src: url('@fontsource/noto-sans-ethiopic/files/noto-sans-ethiopic-ethiopic-400-normal.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+  size-adjust: 140%;
+  unicode-range: U+1200-139F, U+2D80-2DDF, U+AB00-AB2F, U+1E7E0-1E7FF;
+}
+
+@font-face {
+  font-family: 'Ethiopic Fallback';
+  src: url('@fontsource/noto-sans-ethiopic/files/noto-sans-ethiopic-ethiopic-700-normal.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+  size-adjust: 140%;
+  unicode-range: U+1200-139F, U+2D80-2DDF, U+AB00-AB2F, U+1E7E0-1E7FF;
+}
+
+/* Tigrinya mode: also covers spaces so words aren't split by the pixel font's wide gaps. */
+@font-face {
+  font-family: 'Ethiopic Text';
+  src: url('@fontsource/noto-sans-ethiopic/files/noto-sans-ethiopic-ethiopic-400-normal.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+  size-adjust: 165%;
+  unicode-range: U+0020, U+00A0, U+1200-139F, U+2D80-2DDF, U+AB00-AB2F, U+1E7E0-1E7FF;
+}
+
+@font-face {
+  font-family: 'Ethiopic Text';
+  src: url('@fontsource/noto-sans-ethiopic/files/noto-sans-ethiopic-ethiopic-700-normal.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+  size-adjust: 165%;
+  unicode-range: U+0020, U+00A0, U+1200-139F, U+2D80-2DDF, U+AB00-AB2F, U+1E7E0-1E7FF;
+}
+
+html[lang='ti'] {
+  --pixel-font: 'Ethiopic Text', 'Press Start 2P', monospace;
+}
+
 :root {
-  --pixel-font: 'Press Start 2P', monospace;
+  --pixel-font: 'Press Start 2P', 'Ethiopic Fallback', monospace;
 
   /* Habesha kemis — bright white cloth base */
   --bg-cream: #faf7f0;

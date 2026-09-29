@@ -1,10 +1,12 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
+import { useLanguage } from '../i18n/languageContext'
 import musicSrc from '../tigrinya_ai.mp3'
 
 const STORAGE_KEY = 'ne-aday-music-muted'
 const VOLUME = 0.12
 
 export function BackgroundMusic() {
+  const { t } = useLanguage()
   const audioRef = useRef<HTMLAudioElement | null>(null)
   const [muted, setMuted] = useState(
     () => localStorage.getItem(STORAGE_KEY) === 'true',
@@ -76,9 +78,9 @@ export function BackgroundMusic() {
       type="button"
       className="bg-music-toggle"
       onClick={toggle}
-      aria-label={muted ? 'Turn music on' : 'Turn music off'}
+      aria-label={muted ? t.musicTurnOn : t.musicTurnOff}
       aria-pressed={!muted}
-      title={muted ? 'Music off' : 'Music on'}
+      title={muted ? t.musicOff : t.musicOn}
     >
       <span className="bg-music-toggle__icon" aria-hidden>
         {muted ? '🔇' : '♫'}

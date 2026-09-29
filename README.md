@@ -34,3 +34,7 @@ Timers are optional helpers. You always control when to move on.
 ## Adding recipes
 
 Edit `src/data/recipes.ts`. Each step needs `instruction`, `detail`, `durationLabel`, and optional `durationMinutes` for the timer.
+
+## Languages
+
+The **EN / ትግ** button switches between English and Tigrinya (remembered across visits). UI text lives in `src/i18n/strings.ts`; Tigrinya recipe text lives in `src/i18n/recipes.ti.ts`, keyed by recipe and step `id`. Anything without a translation falls back to English.

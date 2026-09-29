@@ -89,6 +89,36 @@
   opacity: 0.5;
 }
 
+/* ── Language toggle ───────────────────────────────────── */
+
+.lang-toggle {
+  position: absolute;
+  top: 14px;
+  right: 52px;
+  z-index: 20;
+  min-width: 36px;
+  height: 36px;
+  padding: 0 6px;
+  border: 3px solid var(--border-gold);
+  background: var(--bg-panel);
+  background-image: var(--habesha-weave);
+  box-shadow: 2px 2px 0 var(--shadow);
+  font-family: var(--pixel-font);
+  font-size: 9px;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: transform 0.05s, filter 0.1s;
+}
+
+.lang-toggle:hover {
+  filter: brightness(1.15);
+}
+
+.lang-toggle:active {
+  transform: translate(2px, 2px);
+  box-shadow: none;
+}
+
 /* ── Screens ───────────────────────────────────────────── */
 
 .screen {
@@ -252,6 +282,8 @@
   align-items: center;
   justify-content: space-between;
   gap: 8px;
+  /* Clears the absolutely positioned language + music buttons */
+  padding-right: 72px;
 }
 
 .step-indicator__phase {

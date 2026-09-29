@@ -2,6 +2,7 @@ import type { Recipe } from '../types/game'
 import { getDishEmoji } from '../data/recipes'
 import { PixelButton } from '../components/PixelButton'
 import { PixelPanel } from '../components/PixelPanel'
+import { useLanguage } from '../i18n/languageContext'
 
 interface ServeScreenProps {
   recipe: Recipe
@@ -10,6 +11,8 @@ interface ServeScreenProps {
 }
 
 export function ServeScreen({ recipe, onPlayAgain, onHome }: ServeScreenProps) {
+  const { t } = useLanguage()
+
   return (
     <div
       className="screen serve-screen"
@@ -21,8 +24,8 @@ export function ServeScreen({ recipe, onPlayAgain, onHome }: ServeScreenProps) {
         ))}
       </div>
 
-      <h2 className="serve-screen__title">Bruch'o!</h2>
-      <p className="serve-screen__subtitle">Beautifully done!</p>
+      <h2 className="serve-screen__title">{t.serveTitle}</h2>
+      <p className="serve-screen__subtitle">{t.serveSubtitle}</p>
 
       <div className="serve-screen__plate">
         <div className="injera">
@@ -41,10 +44,10 @@ export function ServeScreen({ recipe, onPlayAgain, onHome }: ServeScreenProps) {
 
       <div className="serve-screen__actions">
         <PixelButton onClick={onPlayAgain}>
-          Cook Another Dish
+          {t.cookAnother}
         </PixelButton>
         <PixelButton variant="secondary" onClick={onHome}>
-          Main Menu
+          {t.mainMenu}
         </PixelButton>
       </div>
     </div>

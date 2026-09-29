@@ -1,17 +1,20 @@
-import type { Recipe } from '../types/game'
 import { PixelButton } from '../components/PixelButton'
 import { PixelPanel } from '../components/PixelPanel'
+import { useLanguage } from '../i18n/languageContext'
+import type { LocalizedRecipe } from '../i18n/recipes.ti'
 
 interface IntroScreenProps {
-  recipe: Recipe
+  recipe: LocalizedRecipe
   onContinue: () => void
   onBack: () => void
 }
 
 export function IntroScreen({ recipe, onContinue, onBack }: IntroScreenProps) {
+  const { t } = useLanguage()
+
   return (
     <div className="screen intro-screen" style={{ '--recipe-primary': recipe.palette.primary } as React.CSSProperties}>
-      <div className="intro-screen__badge">{recipe.nameAmharic}</div>
+      <div className="intro-screen__badge">{recipe.altName}</div>
       <h2 className="screen__heading">{recipe.name}</h2>
       <p className="intro-screen__tagline">{recipe.tagline}</p>
 
@@ -27,29 +30,29 @@ export function IntroScreen({ recipe, onContinue, onBack }: IntroScreenProps) {
       <div className="intro-screen__preview">
         <div className="intro-screen__phase">
           <span>1</span>
-          <p>Prep</p>
-          <small>{recipe.prepSteps.length} steps</small>
+          <p>{t.phasePrep}</p>
+          <small>{t.stepsCount(recipe.prepSteps.length)}</small>
         </div>
         <div className="intro-screen__arrow">→</div>
         <div className="intro-screen__phase">
           <span>2</span>
-          <p>Cook</p>
-          <small>{recipe.cookSteps.length} steps</small>
+          <p>{t.phaseCook}</p>
+          <small>{t.stepsCount(recipe.cookSteps.length)}</small>
         </div>
         <div className="intro-screen__arrow">→</div>
         <div className="intro-screen__phase">
           <span>3</span>
-          <p>Serve</p>
-          <small>enjoy!</small>
+          <p>{t.phaseServe}</p>
+          <small>{t.enjoy}</small>
         </div>
       </div>
 
       <div className="intro-screen__actions">
         <PixelButton variant="secondary" onClick={onBack}>
-          ← Choose Another
+          {t.chooseAnother}
         </PixelButton>
         <PixelButton onClick={onContinue}>
-          Begin Prep →
+          {t.beginPrep}
         </PixelButton>
       </div>
     </div>
