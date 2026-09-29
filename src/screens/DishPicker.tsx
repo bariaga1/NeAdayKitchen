@@ -32,6 +32,9 @@ export function DishPicker({ recipes, onSelect, onBack }: DishPickerProps) {
             <h3 className="dish-card__name">{recipe.name}</h3>
             <p className="dish-card__amharic">{recipe.nameAmharic}</p>
             <p className="dish-card__tagline">{recipe.tagline}</p>
+            {recipe.id === 'shiro' && (
+              <span className="dish-card__veg-badge">Vegetarian</span>
+            )}
             <p className="dish-card__desc">{recipe.description}</p>
             <div className="dish-card__meta">
               <span>{recipe.prepSteps.length} prep steps</span>

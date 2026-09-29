@@ -14,11 +14,11 @@ export function TitleScreen({ onStart }: TitleScreenProps) {
       </div>
 
       <h1 className="title-screen__logo">
-        <span className="title-screen__neaday">Ne Aday</span>
+        <span className="title-screen__nayaday">Nay Aday</span>
         <span className="title-screen__kitchen">Kitchen</span>
       </h1>
 
-      <p className="title-screen__native">ነይ ኣዳይ ኩሽን</p>
+      <p className="title-screen__native">ናይ ኣዳይ ኩሽን</p>
       <p className="title-screen__tagline">Guided Habesha Cooking</p>
 
       <div className="title-screen__mesob">

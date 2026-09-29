@@ -74,11 +74,7 @@ export function TutorialStepScreen({
       </div>
 
       {!stepStarted && (
-        <PixelButton
-          size="lg"
-          onClick={onStartStep}
-          style={{ background: recipe.palette.primary }}
-        >
+        <PixelButton size="lg" onClick={onStartStep}>
           Start Step
         </PixelButton>
       )}
@@ -121,11 +117,7 @@ export function TutorialStepScreen({
             </div>
           )}
 
-          <PixelButton
-            size="lg"
-            onClick={onNext}
-            style={{ background: recipe.palette.primary }}
-          >
+          <PixelButton size="lg" onClick={onNext}>
             {isLastStep ? `Finish ${phaseLabel} →` : 'Next Step →'}
           </PixelButton>
         </div>

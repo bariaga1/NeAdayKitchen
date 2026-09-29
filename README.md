@@ -1,6 +1,6 @@
-# Ne Aday Kitchen
+# Nay Aday Kitchen
 
-A guided pixel-art cooking tutorial for Habesha cuisine. Walk through **Tsebhi Dorho** or **Classic Beef Tibs** from prep to plate at your own pace.
+A guided pixel-art cooking tutorial for Habesha cuisine. Walk through **Tsebhi Dorho**, **Classic Beef Tibs**, or **Shiro** from prep to plate at your own pace.
 
 ## Run
 
@@ -24,6 +24,7 @@ Timers are optional helpers. You always control when to move on.
 
 - **Tsebhi Dorho** (ጸብሒ ዶርሆ) — celebratory chicken stew, ~2+ hours total
 - **Classic Beef Tibs** (ቲብስ) — sizzling sautéed beef, ~45 min total
+- **Shiro** (ሽሮ) — vegetarian chickpea stew, ~50 min total
 
 ## Stack
 

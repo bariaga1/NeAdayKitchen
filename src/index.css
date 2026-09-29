@@ -2,15 +2,73 @@
 
 :root {
   --pixel-font: 'Press Start 2P', monospace;
-  --bg-dark: #1a1210;
-  --bg-panel: #2d2420;
-  --text-light: #f5e6d3;
-  --text-muted: #a89080;
-  --border: #4a3c34;
-  --btn-primary: #8b1a1a;
-  --btn-secondary: #3d3028;
-  --btn-accent: #c9a227;
-  --shadow: #0a0806;
+
+  /* Habesha kemis — bright white cloth base */
+  --bg-cream: #faf7f0;
+  --bg-panel: #fffefb;
+  --bg-warm: #f5efe4;
+
+  --text-primary: #2c2420;
+  --text-light: #2c2420;
+  --text-muted: #7a6b5c;
+  --text-on-dark: #fffef9;
+
+  --border: #d4c4a8;
+  --border-gold: #c9a227;
+
+  /* Tibeb embroidery colors */
+  --tibeb-green: #078930;
+  --tibeb-gold: #fcdd09;
+  --tibeb-red: #da121a;
+  --eritrean-blue: #4189dd;
+
+  --btn-primary: var(--eritrean-blue);
+  --btn-secondary: #e8ddd0;
+  --btn-accent: #078930;
+  --shadow: rgba(44, 36, 32, 0.18);
+
+  /* Woven cross-hatch (habesha cloth) */
+  --habesha-weave:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 7px,
+      rgba(196, 168, 130, 0.07) 7px,
+      rgba(196, 168, 130, 0.07) 8px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 7px,
+      rgba(196, 168, 130, 0.07) 7px,
+      rgba(196, 168, 130, 0.07) 8px
+    ),
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 11px,
+      rgba(180, 150, 110, 0.05) 11px,
+      rgba(180, 150, 110, 0.05) 12px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 11px,
+      rgba(180, 150, 110, 0.05) 11px,
+      rgba(180, 150, 110, 0.05) 12px
+    );
+
+  --tibeb-stripe: repeating-linear-gradient(
+    90deg,
+    var(--tibeb-green) 0px,
+    var(--tibeb-green) 14px,
+    var(--tibeb-gold) 14px,
+    var(--tibeb-gold) 28px,
+    var(--tibeb-red) 28px,
+    var(--tibeb-red) 42px,
+    var(--tibeb-gold) 42px,
+    var(--tibeb-gold) 56px
+  );
 }
 
 * {
@@ -25,8 +83,9 @@ html, body, #root {
 
 body {
   font-family: var(--pixel-font);
-  background: var(--bg-dark);
-  color: var(--text-light);
+  background-color: var(--bg-warm);
+  background-image: var(--habesha-weave);
+  color: var(--text-primary);
   image-rendering: pixelated;
   -webkit-font-smoothing: none;
   overflow: hidden;

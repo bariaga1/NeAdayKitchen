@@ -10,28 +10,54 @@
 .app__frame {
   width: 100%;
   height: 100%;
-  background: var(--recipe-bg, var(--bg-dark));
-  border: 4px solid var(--border);
+  background-color: var(--recipe-bg, var(--bg-cream));
+  background-image: var(--habesha-weave);
+  border: 4px solid var(--border-gold);
   box-shadow:
-    0 0 0 4px var(--shadow),
+    0 0 0 2px var(--tibeb-red),
+    0 0 0 6px var(--bg-panel),
+    0 0 0 8px var(--tibeb-green),
     8px 8px 0 var(--shadow);
   overflow-y: auto;
   overflow-x: hidden;
   position: relative;
 }
 
+.app__frame::before,
+.app__frame::after {
+  content: '';
+  position: sticky;
+  left: 0;
+  right: 0;
+  display: block;
+  height: 5px;
+  background: var(--tibeb-stripe);
+  z-index: 15;
+  flex-shrink: 0;
+}
+
+.app__frame::before {
+  top: 0;
+}
+
+.app__frame::after {
+  bottom: 0;
+  margin-top: auto;
+}
+
 /* ── Background music toggle ───────────────────────────── */
 
 .bg-music-toggle {
   position: absolute;
-  top: 10px;
+  top: 14px;
   right: 10px;
   z-index: 20;
   width: 36px;
   height: 36px;
   padding: 0;
-  border: 3px solid var(--border);
+  border: 3px solid var(--border-gold);
   background: var(--bg-panel);
+  background-image: var(--habesha-weave);
   box-shadow: 2px 2px 0 var(--shadow);
   cursor: pointer;
   display: flex;
@@ -100,16 +126,16 @@
 .pixel-btn {
   font-family: var(--pixel-font);
   font-size: 10px;
-  color: var(--text-light);
+  color: var(--text-on-dark);
   background: var(--btn-primary);
-  border: none;
+  border: 2px solid var(--border-gold);
   padding: 14px 20px;
   cursor: pointer;
   position: relative;
   box-shadow:
     0 4px 0 var(--shadow),
-    inset 0 -4px 0 rgba(0,0,0,0.2),
-    inset 0 4px 0 rgba(255,255,255,0.1);
+    inset 0 -4px 0 rgba(0,0,0,0.15),
+    inset 0 4px 0 rgba(255,255,255,0.15);
   transition: transform 0.05s, box-shadow 0.05s;
   line-height: 1.5;
   text-align: center;
@@ -129,11 +155,14 @@
 
 .pixel-btn--secondary {
   background: var(--btn-secondary);
+  color: var(--text-primary);
+  border-color: var(--border);
 }
 
 .pixel-btn--accent {
   background: var(--btn-accent);
-  color: var(--shadow);
+  color: var(--text-on-dark);
+  border-color: var(--tibeb-green);
 }
 
 .pixel-btn--sm {
@@ -149,11 +178,13 @@
 /* ── Pixel panel ───────────────────────────────────────── */
 
 .pixel-panel {
-  background: var(--bg-panel);
-  border: 4px solid var(--border);
+  background-color: var(--bg-panel);
+  background-image: var(--habesha-weave);
+  border: 3px solid var(--border);
+  border-left: 6px solid var(--panel-accent, var(--recipe-primary, var(--btn-primary)));
   padding: 16px;
   width: 100%;
-  box-shadow: 4px 4px 0 var(--shadow);
+  box-shadow: 3px 3px 0 var(--shadow);
   position: relative;
 }
 
@@ -163,8 +194,20 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 4px;
-  background: var(--panel-accent, var(--recipe-primary, var(--btn-primary)));
+  height: 3px;
+  background: var(--tibeb-stripe);
+  opacity: 0.85;
+}
+
+.pixel-panel::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--tibeb-stripe);
+  opacity: 0.85;
 }
 
 /* ── Progress bar ──────────────────────────────────────── */
@@ -183,7 +226,7 @@
 
 .progress-bar__track {
   height: 16px;
-  background: var(--shadow);
+  background: var(--bg-warm);
   border: 2px solid var(--border);
   position: relative;
 }
@@ -226,7 +269,7 @@
 .step-indicator__dot {
   width: 10px;
   height: 10px;
-  background: var(--shadow);
+  background: var(--bg-warm);
   border: 2px solid var(--border);
 }
 
@@ -262,8 +305,10 @@
   width: 100%;
   height: 100%;
   position: relative;
-  background: linear-gradient(180deg, #3d2e24 0%, #2a2018 60%, #1f1814 100%);
-  border: 4px solid var(--border);
+  background:
+    var(--habesha-weave),
+    linear-gradient(180deg, #f5ebe0 0%, #ebe3d6 60%, #e0d6c8 100%);
+  border: 3px solid var(--border-gold);
   overflow: hidden;
 }
 
@@ -283,7 +328,7 @@
   left: 0;
   right: 0;
   height: 8px;
-  background: #6b5a4a;
+  background: #c9b896;
 }
 
 .kitchen-scene__stove {
@@ -292,8 +337,8 @@
   right: 16px;
   width: 80px;
   height: 48px;
-  background: #333;
-  border: 2px solid #222;
+  background: #8a8078;
+  border: 2px solid #6a6058;
   display: flex;
   gap: 8px;
   padding: 8px;
@@ -395,9 +440,11 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  background: var(--shadow);
-  border: 3px solid var(--border);
+  background: var(--bg-panel);
+  background-image: var(--habesha-weave);
+  border: 3px solid var(--border-gold);
   padding: 10px 16px;
+  color: var(--text-primary);
 }
 
 .timer-display--running .timer-display__time {
@@ -420,8 +467,9 @@
   justify-content: center;
   text-align: center;
   background:
-    radial-gradient(ellipse at 50% 0%, rgba(196, 75, 42, 0.15) 0%, transparent 60%),
-    var(--bg-dark);
+    radial-gradient(ellipse at 50% 0%, rgba(252, 221, 9, 0.12) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 80%, rgba(7, 137, 48, 0.06) 0%, transparent 50%),
+    transparent;
 }
 
 .title-screen__decor {
@@ -437,7 +485,7 @@
   margin: 8px 0;
 }
 
-.title-screen__neaday {
+.title-screen__nayaday {
   color: var(--btn-accent);
   display: block;
 }
@@ -543,7 +591,7 @@
 
 .dish-card__name {
   font-size: 12px;
-  color: var(--text-light);
+  color: var(--text-primary);
 }
 
 .dish-card__amharic {
@@ -553,7 +601,15 @@
 
 .dish-card__tagline {
   font-size: 8px;
-  color: var(--btn-accent);
+  color: var(--recipe-primary, var(--btn-primary));
+}
+
+.dish-card__veg-badge {
+  font-size: 6px;
+  color: var(--text-on-dark);
+  background: var(--tibeb-green);
+  padding: 4px 8px;
+  border: 2px solid var(--border-gold);
 }
 
 .dish-card__desc {
@@ -590,7 +646,7 @@
 .intro-screen__note p {
   font-size: 8px;
   line-height: 2;
-  color: var(--text-light);
+  color: var(--text-primary);
 }
 
 .intro-screen__note {
@@ -615,8 +671,9 @@
 .intro-screen__phase {
   flex: 1;
   text-align: center;
-  background: var(--shadow);
-  border: 2px solid var(--border);
+  background: var(--bg-panel);
+  background-image: var(--habesha-weave);
+  border: 2px solid var(--border-gold);
   padding: 12px 8px;
 }
 
@@ -678,8 +735,9 @@
   align-items: center;
   gap: 4px;
   padding: 12px;
-  background: var(--shadow);
-  border: 2px solid var(--border);
+  background: var(--bg-panel);
+  background-image: var(--habesha-weave);
+  border: 2px solid var(--border-gold);
 }
 
 .tutorial-step__duration-label {
@@ -852,7 +910,7 @@
 .serve-screen__message p {
   font-size: 8px;
   line-height: 2;
-  color: var(--text-light);
+  color: var(--text-primary);
 }
 
 .serve-screen__tip {

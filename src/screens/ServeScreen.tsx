@@ -40,7 +40,7 @@ export function ServeScreen({ recipe, onPlayAgain, onHome }: ServeScreenProps) {
       </PixelPanel>
 
       <div className="serve-screen__actions">
-        <PixelButton onClick={onPlayAgain} style={{ background: recipe.palette.primary }}>
+        <PixelButton onClick={onPlayAgain}>
           Cook Another Dish
         </PixelButton>
         <PixelButton variant="secondary" onClick={onHome}>

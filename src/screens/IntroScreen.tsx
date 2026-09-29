@@ -48,7 +48,7 @@ export function IntroScreen({ recipe, onContinue, onBack }: IntroScreenProps) {
         <PixelButton variant="secondary" onClick={onBack}>
           ← Choose Another
         </PixelButton>
-        <PixelButton onClick={onContinue} style={{ background: recipe.palette.primary }}>
+        <PixelButton onClick={onContinue}>
           Begin Prep →
         </PixelButton>
       </div>

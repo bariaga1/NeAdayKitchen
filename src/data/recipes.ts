@@ -100,8 +100,8 @@ export const recipes: Recipe[] = [
     palette: {
       primary: '#8b1a1a',
       secondary: '#c44b2a',
-      accent: '#f4c430',
-      bg: '#2a1810',
+      accent: '#078930',
+      bg: '#fdf8f4',
     },
   },
   {
@@ -195,8 +195,95 @@ export const recipes: Recipe[] = [
     palette: {
       primary: '#6b3a2a',
       secondary: '#9c5c3c',
-      accent: '#c9a227',
-      bg: '#1a1410',
+      accent: '#da121a',
+      bg: '#faf6f0',
+    },
+  },
+  {
+    id: 'shiro',
+    name: 'Shiro',
+    nameAmharic: 'ሽሮ',
+    tagline: 'Vegetarian chickpea stew',
+    description: 'A velvety, protein-rich fasting favorite — ground chickpea flour simmered with garlic, ginger, and berbere.',
+    intro:
+      'Shiro feeds communities during fasting seasons and quiet weeknights alike. No meat, no dairy — just chickpea flour whisked into a smooth slurry, then cooked low and slow until thick, creamy, and deeply comforting.',
+    culturalNote:
+      'Beloved across Eritrea and Ethiopia during Orthodox fasting. Every household has its own blend — some add tomato, others keep it pure shiro and spice.',
+    prepSteps: [
+      {
+        id: 'measure-shiro',
+        instruction: 'Measure the shiro flour',
+        detail: 'Scoop fine chickpea flour into a bowl. This is the heart of the stew — measure carefully.',
+        durationMinutes: 5,
+        durationLabel: '~5 min',
+        emoji: '🥣',
+      },
+      {
+        id: 'chop-onions-shiro',
+        instruction: 'Chop onions',
+        detail: 'Finely dice red onion. Shiro needs a good aromatic base, same as any wat.',
+        durationMinutes: 10,
+        durationLabel: '~10 min',
+        emoji: '🧅',
+      },
+      {
+        id: 'mince-aromatics-shiro',
+        instruction: 'Mince garlic & ginger',
+        detail: 'Pound or mince garlic and ginger together until fragrant and paste-like.',
+        durationMinutes: 5,
+        durationLabel: '~5 min',
+        emoji: '🧄',
+      },
+      {
+        id: 'mix-slurry',
+        instruction: 'Whisk the shiro slurry',
+        detail: 'Slowly add cold water to the flour, whisking constantly until completely smooth with no lumps.',
+        durationMinutes: 8,
+        durationLabel: '~8 min',
+        emoji: '💧',
+      },
+    ],
+    cookSteps: [
+      {
+        id: 'saute-base-shiro',
+        instruction: 'Sauté the base',
+        detail: 'Cook onions, garlic, and ginger in oil over medium heat until soft and golden.',
+        durationMinutes: 10,
+        durationLabel: '8–10 min',
+        emoji: '🧄',
+      },
+      {
+        id: 'add-slurry',
+        instruction: 'Pour in the shiro slurry',
+        detail: 'Add berbere to the pan, then pour in the slurry in a steady stream while stirring constantly.',
+        durationMinutes: 5,
+        durationLabel: '~5 min',
+        emoji: '🌶️',
+      },
+      {
+        id: 'simmer-thick',
+        instruction: 'Simmer until thick',
+        detail: 'Reduce heat to low. Stir often as the shiro transforms from liquid to velvety stew.',
+        durationMinutes: 22,
+        durationLabel: '20–25 min',
+        emoji: '🍲',
+      },
+      {
+        id: 'season-finish-shiro',
+        instruction: 'Season & finish',
+        detail: 'Taste and adjust salt. Add a knob of tesmi if you are not fasting. The shiro should coat a spoon.',
+        durationMinutes: 5,
+        durationLabel: '~5 min',
+        emoji: '✨',
+      },
+    ],
+    serveMessage: 'Bruch\'o! Your shiro is creamy and ready.',
+    serveTip: 'Ladle over fresh injera. A sprinkle of mitmita adds gentle heat.',
+    palette: {
+      primary: '#b8860b',
+      secondary: '#d4a843',
+      accent: '#078930',
+      bg: '#f8faf4',
     },
   },
 ]
@@ -208,5 +295,6 @@ export function getRecipe(id: string): Recipe | undefined {
 export function getDishEmoji(id: string): string {
   if (id === 'tsebhi-dorho') return '🍗'
   if (id === 'tibs') return '🥩'
+  if (id === 'shiro') return '🥣'
   return '🍲'
 }
