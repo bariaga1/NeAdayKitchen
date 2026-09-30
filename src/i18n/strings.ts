@@ -22,7 +22,11 @@ const en = {
   stepsCount: (n: number) => `${n} steps`,
   enjoy: 'enjoy!',
   chooseAnother: '← Choose Another',
+  gatherIngredients: 'Gather Ingredients →',
   beginPrep: 'Begin Prep →',
+
+  ingredientsHeading: 'Ingredients',
+  ingredientsSubheading: 'Gather everything before you start',
 
   labelPrep: 'PREP',
   labelCook: 'COOK',
@@ -72,7 +76,11 @@ const ti: Strings = {
   stepsCount: (n) => `${n} ስጉምቲ`,
   enjoy: 'ተሓጐሱ!',
   chooseAnother: '← ካልእ ምረጹ',
+  gatherIngredients: 'ንጥረ-ነገራት ኣኻኽቡ →',
   beginPrep: 'ምድላው ጀምሩ →',
+
+  ingredientsHeading: 'ንጥረ-ነገራት',
+  ingredientsSubheading: 'ቅድሚ ምጅማርኩም ኩሉ ኣዳልዉ',
 
   labelPrep: 'ምድላው',
   labelCook: 'ምስራሕ',

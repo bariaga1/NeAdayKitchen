@@ -52,7 +52,7 @@ export function IntroScreen({ recipe, onContinue, onBack }: IntroScreenProps) {
           {t.chooseAnother}
         </PixelButton>
         <PixelButton onClick={onContinue}>
-          {t.beginPrep}
+          {t.gatherIngredients}
         </PixelButton>
       </div>
     </div>

@@ -737,6 +737,47 @@
   width: 100%;
 }
 
+.ingredients-screen__panel {
+  width: 100%;
+}
+
+.ingredients-screen__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ingredients-screen__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 8px;
+  line-height: 1.6;
+}
+
+.ingredients-screen__emoji {
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.ingredients-screen__name {
+  flex: 1;
+  color: var(--text-primary);
+}
+
+.ingredients-screen__amount {
+  color: var(--text-muted);
+  text-align: right;
+}
+
+.ingredients-screen__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
 .timer-display--finished .timer-display__time {
   color: #5c8a3c;
 }
