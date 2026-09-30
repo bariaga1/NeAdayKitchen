@@ -1,4 +1,11 @@
-export type GamePhase = 'title' | 'picker' | 'intro' | 'prep' | 'cook' | 'serve'
+export type GamePhase =
+  | 'title'
+  | 'picker'
+  | 'intro'
+  | 'ingredients'
+  | 'prep'
+  | 'cook'
+  | 'serve'
 
 export interface RecipeStep {
   id: string
