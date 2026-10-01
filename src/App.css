@@ -754,6 +754,33 @@
   gap: 10px;
   font-size: 8px;
   line-height: 1.6;
+  cursor: pointer;
+}
+
+.ingredients-screen__checkbox {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  border: 2px solid var(--border-gold);
+  background: var(--bg-panel);
+  cursor: pointer;
+}
+
+.ingredients-screen__checkbox:checked {
+  background: var(--recipe-accent, var(--btn-accent));
+  box-shadow: inset 0 0 0 2px var(--bg-panel);
+}
+
+.ingredients-screen__checkbox:focus-visible {
+  outline: 2px solid var(--recipe-primary, var(--btn-primary));
+  outline-offset: 2px;
+}
+
+.ingredients-screen__item--checked .ingredients-screen__name,
+.ingredients-screen__item--checked .ingredients-screen__amount {
+  text-decoration: line-through;
+  opacity: 0.5;
 }
 
 .ingredients-screen__emoji {

@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { PixelButton } from '../components/PixelButton'
 import { PixelPanel } from '../components/PixelPanel'
 import { useLanguage } from '../i18n/languageContext'
@@ -11,6 +12,15 @@ interface IngredientsScreenProps {
 
 export function IngredientsScreen({ recipe, onContinue, onBack }: IngredientsScreenProps) {
   const { t } = useLanguage()
+  const [checked, setChecked] = useState<Record<string, boolean>>({})
+
+  function toggleIngredient(id: string) {
+    if (checked[id]) {
+      setChecked({ ...checked, [id]: false })
+    } else {
+      setChecked({ ...checked, [id]: true })
+    }
+  }
 
   return (
     <div className="screen ingredients-screen">
@@ -19,13 +29,26 @@ export function IngredientsScreen({ recipe, onContinue, onBack }: IngredientsScr
 
       <PixelPanel className="ingredients-screen__panel" accent={recipe.palette.accent}>
         <ul className="ingredients-screen__list">
-          {recipe.ingredients.map((ingredient) => (
-            <li key={ingredient.id} className="ingredients-screen__item">
-              <span className="ingredients-screen__emoji">{ingredient.emoji}</span>
-              <span className="ingredients-screen__name">{ingredient.name}</span>
-              <span className="ingredients-screen__amount">{ingredient.amount}</span>
-            </li>
-          ))}
+          {recipe.ingredients.map((ingredient) => {
+            const isChecked = checked[ingredient.id] ?? false
+            return (
+              <li key={ingredient.id}>
+                <label
+                  className={`ingredients-screen__item${isChecked ? ' ingredients-screen__item--checked' : ''}`}
+                >
+                  <input
+                    type="checkbox"
+                    className="ingredients-screen__checkbox"
+                    checked={isChecked}
+                    onChange={() => toggleIngredient(ingredient.id)}
+                  />
+                  <span className="ingredients-screen__emoji">{ingredient.emoji}</span>
+                  <span className="ingredients-screen__name">{ingredient.name}</span>
+                  <span className="ingredients-screen__amount">{ingredient.amount}</span>
+                </label>
+              </li>
+            )
+          })}
         </ul>
       </PixelPanel>
 
