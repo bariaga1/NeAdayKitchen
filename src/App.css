@@ -798,6 +798,11 @@
   text-align: right;
 }
 
+.ingredients-screen__count {
+  font-size: 8px;
+  color: var(--text-muted);
+}
+
 .ingredients-screen__actions {
   display: flex;
   flex-direction: column;

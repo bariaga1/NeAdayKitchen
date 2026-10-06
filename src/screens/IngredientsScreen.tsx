@@ -22,6 +22,7 @@ export function IngredientsScreen({ recipe, onContinue, onBack }: IngredientsScr
     }
   }
 
+  const gatheredCount =  Object.values(checked).filter(Boolean).length
   return (
     <div className="screen ingredients-screen">
       <h2 className="screen__heading">{t.ingredientsHeading}</h2>
@@ -51,6 +52,10 @@ export function IngredientsScreen({ recipe, onContinue, onBack }: IngredientsScr
           })}
         </ul>
       </PixelPanel>
+
+      <p className="ingredients-screen__count">
+        {t.gatheredCount(gatheredCount, recipe.ingredients.length)}
+      </p>
 
       <div className="ingredients-screen__actions">
         <PixelButton variant="secondary" onClick={onBack}>

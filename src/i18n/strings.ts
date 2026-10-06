@@ -27,6 +27,7 @@ const en = {
 
   ingredientsHeading: 'Ingredients',
   ingredientsSubheading: 'Gather everything before you start',
+  gatheredCount: (done: number, total: number) => `${done} of ${total} gathered`,
 
   labelPrep: 'PREP',
   labelCook: 'COOK',
@@ -81,6 +82,7 @@ const ti: Strings = {
 
   ingredientsHeading: 'ንጥረ-ነገራት',
   ingredientsSubheading: 'ቅድሚ ምጅማርኩም ኩሉ ኣዳልዉ',
+  gatheredCount: (done, total) => `${done} ካብ ${total} ተኣኪቡ`,
 
   labelPrep: 'ምድላው',
   labelCook: 'ምስራሕ',
