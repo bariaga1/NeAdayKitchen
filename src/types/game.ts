@@ -1,4 +1,11 @@
-export type GamePhase = 'title' | 'picker' | 'intro' | 'prep' | 'cook' | 'serve'
+export type GamePhase =
+  | 'title'
+  | 'picker'
+  | 'intro'
+  | 'ingredients'
+  | 'prep'
+  | 'cook'
+  | 'serve'
 
 export interface RecipeStep {
   id: string
@@ -11,6 +18,14 @@ export interface RecipeStep {
   emoji: string
 }
 
+export interface Ingredient {
+  id: string
+  name: string
+  /** Human-readable quantity, e.g. "2 lbs" or "1/2 cup" */
+  amount: string
+  emoji: string
+}
+
 export interface Recipe {
   id: string
   name: string
@@ -19,6 +34,7 @@ export interface Recipe {
   description: string
   intro: string
   culturalNote: string
+  ingredients: Ingredient[]
   prepSteps: RecipeStep[]
   cookSteps: RecipeStep[]
   serveMessage: string

@@ -11,6 +11,16 @@ export const recipes: Recipe[] = [
       'Tsebhi Dorho is the dish of celebration in Eritrean homes. Families gather around the mesob for holidays, weddings, and Sundays. The secret is patience: onions cooked down until sweet, berbere bloomed in tesmi, and chicken that falls off the bone.',
     culturalNote:
       'Traditionally served on a large communal platter. Hard-boiled eggs are added near the end — one per guest is a sign of hospitality.',
+    ingredients: [
+      { id: 'chicken', name: 'Chicken pieces', amount: '2–3 lbs', emoji: '🍗' },
+      { id: 'lemon', name: 'Lemon', amount: '1', emoji: '🍋' },
+      { id: 'red-onion', name: 'Red onions', amount: '4 large', emoji: '🧅' },
+      { id: 'berbere', name: 'Berbere spice', amount: '1/4 cup', emoji: '🌶️' },
+      { id: 'tesmi', name: 'Tesmi (clarified butter)', amount: '1/2 cup', emoji: '🧈' },
+      { id: 'eggs', name: 'Eggs', amount: '1 per guest', emoji: '🥚' },
+      { id: 'salt', name: 'Salt', amount: 'to taste', emoji: '🧂' },
+      { id: 'injera', name: 'Injera', amount: 'for serving', emoji: '🫓' },
+    ],
     prepSteps: [
       {
         id: 'prep-chicken',
@@ -114,6 +124,17 @@ export const recipes: Recipe[] = [
       'Tibs is everyday Habesha comfort — quick, sizzling, and full of aroma. Classic beef tibs hits the pan hard: cubes of meat, softened onions, fresh rosemary, and garlic added at the very end so it stays bright.',
     culturalNote:
       'Often served sizzling from the pan, with injera to scoop. Tibs te tibs (with bread) is a popular street variation — but at home, injera is king.',
+    ingredients: [
+      { id: 'beef', name: 'Beef (sirloin or tenderloin)', amount: '1.5 lbs', emoji: '🥩' },
+      { id: 'red-onion', name: 'Red onion', amount: '1 large', emoji: '🧅' },
+      { id: 'peppers', name: 'Jalapeño or green pepper', amount: '2', emoji: '🫑' },
+      { id: 'garlic', name: 'Garlic', amount: '4 cloves', emoji: '🧄' },
+      { id: 'ginger', name: 'Fresh ginger', amount: '1 inch piece', emoji: '🫚' },
+      { id: 'rosemary', name: 'Fresh rosemary', amount: '2 sprigs', emoji: '🌿' },
+      { id: 'niter-kibbeh', name: 'Niter kibbeh (or oil)', amount: '3 tbsp', emoji: '🧈' },
+      { id: 'mitmita', name: 'Mitmita', amount: '1 pinch', emoji: '🌶️' },
+      { id: 'salt-pepper', name: 'Salt & black pepper', amount: 'to taste', emoji: '🧂' },
+    ],
     prepSteps: [
       {
         id: 'cube-beef',
@@ -209,6 +230,16 @@ export const recipes: Recipe[] = [
       'Shiro feeds communities during fasting seasons and quiet weeknights alike. No meat, no dairy — just chickpea flour whisked into a smooth slurry, then cooked low and slow until thick, creamy, and deeply comforting.',
     culturalNote:
       'Beloved across Eritrea and Ethiopia during Orthodox fasting. Every household has its own blend — some add tomato, others keep it pure shiro and spice.',
+    ingredients: [
+      { id: 'shiro-flour', name: 'Shiro (chickpea flour)', amount: '1 cup', emoji: '🥣' },
+      { id: 'red-onion', name: 'Red onion', amount: '1 large', emoji: '🧅' },
+      { id: 'garlic', name: 'Garlic', amount: '4 cloves', emoji: '🧄' },
+      { id: 'ginger', name: 'Fresh ginger', amount: '1 inch piece', emoji: '🫚' },
+      { id: 'berbere', name: 'Berbere spice', amount: '1 tbsp', emoji: '🌶️' },
+      { id: 'oil', name: 'Oil', amount: '1/4 cup', emoji: '🫒' },
+      { id: 'water', name: 'Cold water', amount: '3 cups', emoji: '💧' },
+      { id: 'salt', name: 'Salt', amount: 'to taste', emoji: '🧂' },
+    ],
     prepSteps: [
       {
         id: 'measure-shiro',

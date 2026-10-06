@@ -6,6 +6,7 @@ import { useGameState } from './hooks/useGameState'
 import { useLanguage } from './i18n/languageContext'
 import { localizeRecipe } from './i18n/recipes.ti'
 import { DishPicker } from './screens/DishPicker'
+import { IngredientsScreen } from './screens/IngredientsScreen'
 import { IntroScreen } from './screens/IntroScreen'
 import { ServeScreen } from './screens/ServeScreen'
 import { TitleScreen } from './screens/TitleScreen'
@@ -63,8 +64,16 @@ function App() {
         {state.phase === 'intro' && recipe && (
           <IntroScreen
             recipe={recipe}
-            onContinue={() => setPhase('prep')}
+            onContinue={() => setPhase('ingredients')}
             onBack={() => setPhase('picker')}
+          />
+        )}
+
+        {state.phase === 'ingredients' && recipe && (
+          <IngredientsScreen
+            recipe={recipe}
+            onContinue={() => setPhase('prep')}
+            onBack={() => setPhase('intro')}
           />
         )}
 
